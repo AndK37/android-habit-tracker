@@ -5,10 +5,8 @@
     android:layout_height="wrap_content"
     android:columnCount="3"
     android:rowCount="3"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginBottom="10dp"
     android:padding="5dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/habit_bg">
 
     <ImageView
@@ -23,13 +21,15 @@
         android:layout_width="50dp"/>
 
     <TextView
+        android:id="@+id/CHName"
         android:text="Habit name"
         style="@style/HabitCalendarNameText"
         android:layout_row="0"
         android:layout_column="1"
         android:layout_columnWeight="1"
-        android:layout_gravity="fill_horizontal"/>
+        android:layout_gravity="fill_horizontal" />
     <TextView
+        android:id="@+id/CHDesc"
         android:text="Habit desc"
         style="@style/HabitCalendarDescText"
         android:layout_row="1"
@@ -38,14 +38,15 @@
         android:layout_gravity="fill_horizontal" />
 
     <CheckBox
+        android:id="@+id/CHCheck"
         style="@style/ColorCheckBox"
         android:layout_row="0"
         android:layout_column="2"
         android:layout_rowSpan="2"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:scaleX="2"
         android:scaleY="2"
-        android:layout_width="40dp"
+        android:layout_width="55dp"
         />
 
     <LinearLayout

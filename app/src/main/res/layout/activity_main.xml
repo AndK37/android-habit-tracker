@@ -23,38 +23,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
         <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_weight="1"
             android:orientation="vertical">
-
-            <include
-                android:id="@+id/cal1"
-                layout="@layout/calendar_habit" />
-
-<!--            <include-->
-<!--                android:id="@+id/cal2"-->
-<!--                layout="@layout/calendar_habit" />-->
-
-<!--            <include-->
-<!--                android:id="@+id/cal3"-->
-<!--                layout="@layout/calendar_habit" />-->
-
-<!--                        <include-->
-<!--                            layout="@layout/calendar_habit" />-->
-<!--                        <include-->
-<!--                            layout="@layout/calendar_habit" />-->
-<!--                        <include-->
-<!--                            layout="@layout/calendar_habit" />-->
-<!--                        <include-->
-<!--                            layout="@layout/calendar_habit" />-->
-<!--                        <include-->
-<!--                            layout="@layout/calendar_habit" />-->
         </LinearLayout>
     </ScrollView>
+<!--    <ListView-->
+<!--        android:id="@+id/mainLV"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_gravity="fill"-->
+<!--        android:layout_weight="1"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        android:paddingRight="16dp"-->
+<!--        android:divider="@color/black"-->
+<!--        android:dividerHeight="10dp">-->
+
+<!--    </ListView>-->
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

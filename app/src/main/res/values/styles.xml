@@ -6,14 +6,20 @@
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="HabitCalendarNameText">
-        <item name="android:textSize">20dp</item>
         <item name="android:fontFamily">@font/lunasima_regular</item>
         <item name="android:textColor">@color/white</item>
+        <item name="autoSizeMinTextSize">16sp</item>
+        <item name="autoSizeMaxTextSize">100sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeStepGranularity">2sp</item>
     </style>
     <style name="HabitCalendarDescText">
-        <item name="android:textSize">16dp</item>
         <item name="android:fontFamily">@font/lunasima_regular</item>
         <item name="android:textColor">@color/light_grey</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeMaxTextSize">100sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeStepGranularity">2sp</item>
     </style>
     <style name="ColorCheckBox">
         <item name="buttonTint">@color/green</item>
