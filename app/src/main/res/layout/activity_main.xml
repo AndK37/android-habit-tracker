@@ -9,53 +9,68 @@
     android:orientation="vertical"
     android:background="@color/black">
 
-    <TextView
-        android:id="@+id/dateTV"
+    <LinearLayout
+        android:id="@+id/mainF"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Среда, 1 янв. 2025"
-        android:textColor="@color/white"
-        android:fontFamily="@font/lunasima_regular"
-        android:textSize="32dp"
-        android:paddingLeft="16dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="fill"
-        android:layout_weight="1"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_weight="1">
         <LinearLayout
-            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/settingsIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_settings_24"
+                android:backgroundTint="@color/transparent"
+                android:tint="@color/white"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/dateTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Среда, 1 янв. 2025"
+                android:textColor="@color/white"
+                android:fontFamily="@font/lunasima_regular"
+                android:textSize="32sp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/addIB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_add_24"
+                android:backgroundTint="@color/transparent"
+                android:tint="@color/white"
+                android:layout_gravity="center"/>
         </LinearLayout>
-    </ScrollView>
-<!--    <ListView-->
-<!--        android:id="@+id/mainLV"-->
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_gravity="fill"-->
-<!--        android:layout_weight="1"-->
-<!--        android:paddingLeft="16dp"-->
-<!--        android:paddingRight="16dp"-->
-<!--        android:divider="@color/black"-->
-<!--        android:dividerHeight="10dp">-->
-
-<!--    </ListView>-->
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@color/grey"
-        app:itemTextColor="@color/white"
-        app:itemIconTint="@color/white" />
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:menu="@menu/bottom_nav_menu"-->
+<!--        android:background="@color/grey"-->
+<!--        app:itemTextColor="@color/white"-->
+<!--        app:itemIconTint="@color/white" />-->
 
 </LinearLayout>

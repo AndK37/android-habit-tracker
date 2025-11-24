@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/test1"
-        android:title="test1"
+        android:id="@+id/add"
+        android:title="Добавить"
         android:icon="@drawable/baseline_add_24"/>
     <item
-        android:id="@+id/test2"
-        android:title="test2"
+        android:id="@+id/home"
+        android:title="Главная"
         android:icon="@drawable/baseline_add_24"/>
     <item
-        android:id="@+id/test3"
-        android:title="test3"
+        android:id="@+id/settings"
+        android:title="Настройки"
         android:icon="@drawable/baseline_add_24"/>
 </menu>

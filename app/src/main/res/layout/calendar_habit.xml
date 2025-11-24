@@ -7,7 +7,7 @@
     android:rowCount="3"
     android:padding="5dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/habit_bg">
+    android:background="@drawable/default_bd">
 
     <ImageView
         android:src="@drawable/baseline_bolt_24"
@@ -35,7 +35,7 @@
         android:layout_row="1"
         android:layout_column="1"
         android:layout_columnWeight="1"
-        android:layout_gravity="fill_horizontal" />
+        android:layout_gravity="fill_horizontal"/>
 
     <CheckBox
         android:id="@+id/CHCheck"
@@ -43,10 +43,10 @@
         android:layout_row="0"
         android:layout_column="2"
         android:layout_rowSpan="2"
-        android:layout_gravity="left"
+        android:layout_columnWeight="0"
+        android:layout_gravity="center"
         android:scaleX="2"
         android:scaleY="2"
-        android:layout_width="55dp"
         />
 
     <LinearLayout

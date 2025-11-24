@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="WeekCalendarText">
-        <item name="android:textSize">14dp</item>
-        <item name="android:fontFamily">@font/lunasima_regular</item>
+    <style name="DefaultText">
         <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/lunasima_regular</item>
     </style>
+
+    <style name="CalendarText" parent="DefaultText">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="WeekCalendarText" parent="DefaultText">
+        <item name="android:textSize">14dp</item>
+    </style>
+
     <style name="HabitCalendarNameText">
         <item name="android:fontFamily">@font/lunasima_regular</item>
         <item name="android:textColor">@color/white</item>
@@ -21,7 +29,24 @@
         <item name="autoSizeTextType">uniform</item>
         <item name="autoSizeStepGranularity">2sp</item>
     </style>
+
     <style name="ColorCheckBox">
         <item name="buttonTint">@color/green</item>
+        <item name="android:saveEnabled">false</item>
+        <item name="android:layout_height">21dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_columnWeight">1</item>
+    </style>
+
+    <style name="MonthCheckBox" parent="ColorCheckBox">
+<!--        <item name="android:scaleX">0.5</item>-->
+<!--        <item name="android:scaleY">0.5</item>-->
+        <item name="android:clickable">false</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="MonthCalendarText" parent="CalendarText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>
