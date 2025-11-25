@@ -51,7 +51,7 @@ public class DBUtils {
             db.delete("history", "habit_id = ? AND check_date = DATE('now')", new String[] {Integer.toString(id)});
         }
     }
-    public Cursor getWeekHabitChecks(int id) {
+    public ArrayList<String> getHabitChecks(int id) {
         Cursor cursor = db.rawQuery(
                 "SELECT check_date FROM habits\n" +
                         "JOIN history ON habits.id = history.habit_id\n" +
@@ -62,8 +62,14 @@ public class DBUtils {
                         "DATE('now')\n" +
                         "ORDER BY check_date",
                 new String[] {Integer.toString(id)});
+
+        ArrayList<String> checks = new ArrayList<>();
         cursor.moveToFirst();
-        return cursor;
+        while (!cursor.isAfterLast()) {
+            checks.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        return checks;
     }
 
     public ArrayList<String> getHabitTypes() {
@@ -86,14 +92,14 @@ public class DBUtils {
 
     public ArrayList<String> getHabitColors() {
         Cursor cursor = db.rawQuery("SELECT name FROM colors", null);
-        ArrayList<String> types = new ArrayList<>();
+        ArrayList<String> colors = new ArrayList<>();
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            types.add(cursor.getString(0));
+            colors.add(cursor.getString(0));
             cursor.moveToNext();
         }
-        return types;
+        return colors;
     }
 
     public Integer getHabitColorIdByName(String name) {

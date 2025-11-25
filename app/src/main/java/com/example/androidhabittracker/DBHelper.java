@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     private boolean checkDB() {
         File fileDB = new File(DB_LOCATION + DB_NAME);
-//        // FIXME: delete after dev
+        // FIXME: delete after dev
 //        if (fileDB.exists()) {
 //            fileDB.delete();
 //            return false;

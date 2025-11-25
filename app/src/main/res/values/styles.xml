@@ -32,6 +32,7 @@
 
     <style name="ColorCheckBox">
         <item name="buttonTint">@color/green</item>
+<!--        <item name="buttonTint">@{habitColor}</item>-->
         <item name="android:saveEnabled">false</item>
         <item name="android:layout_height">21dp</item>
         <item name="android:layout_gravity">center</item>

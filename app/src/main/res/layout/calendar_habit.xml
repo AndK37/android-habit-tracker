@@ -10,6 +10,7 @@
     android:background="@drawable/default_bd">
 
     <ImageView
+        android:id="@+id/habitIV"
         android:src="@drawable/baseline_bolt_24"
         android:tint="@color/green"
         android:layout_row="0"
