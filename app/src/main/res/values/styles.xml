@@ -49,4 +49,21 @@
         <item name="android:layout_columnWeight">1</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="DefaultDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/default_bd</item>
+        <item name="android:fontFamily">@font/lunasima_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonTextColor</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonTextColor</item>
+    </style>
+    <style name="PositiveButtonTextColor">
+        <item name="android:fontFamily">@font/lunasima_regular</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="backgroundColor">@color/transparent</item>
+    </style>
+    <style name="NegativeButtonTextColor">
+        <item name="android:fontFamily">@font/lunasima_regular</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

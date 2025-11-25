@@ -1,6 +1,8 @@
 package com.example.androidhabittracker;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
         cursor = dbUtils.getAllHabits();
 
         for (int i = 0; i < cursor.getCount(); i++) {
+            int id = cursor.getInt(0);
+
             View habitContainer = layoutInflater.inflate(R.layout.calendar_habit, container, false);
 
             habitContainer.setId(View.generateViewId());
@@ -135,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
             CheckBox check = habitContainer.findViewById(R.id.CHCheck);
             check.setChecked(dbUtils.isHabitChecked(cursor.getInt(0)));
 
-            int id = cursor.getInt(0);
             check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
@@ -146,6 +149,31 @@ public class MainActivity extends AppCompatActivity {
                         dbUtils.uncheckHabit(id);
                     }
                     reloadHabit(id, isChecked);
+                }
+            });
+
+            habitContainer.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DefaultDialog);
+                    builder
+                            .setTitle("Удаление")
+                            .setMessage("Удалить привычку \'" + name.getText().toString() + "\'?")
+                            .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dbUtils.deleteHabit(id);
+                                    recreate();
+                                    dialog.cancel();
+                                }
+                            })
+                            .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            }).create().show();
+                    return true;
                 }
             });
 

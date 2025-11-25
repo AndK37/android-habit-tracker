@@ -112,4 +112,11 @@ public class DBUtils {
         db.insert("habits", null, contentValues);
     }
 
+    public void deleteHabit(int id) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("is_active", 0);
+
+        db.update("habits", contentValues, "id = ?", new String[] {Integer.toString(id)});
+    }
+
 }
