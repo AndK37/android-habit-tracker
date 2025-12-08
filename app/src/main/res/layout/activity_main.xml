@@ -49,7 +49,6 @@
                 android:layout_gravity="center"/>
         </LinearLayout>
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,14 +62,4 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        app:menu="@menu/bottom_nav_menu"-->
-<!--        android:background="@color/grey"-->
-<!--        app:itemTextColor="@color/white"-->
-<!--        app:itemIconTint="@color/white" />-->
-
 </LinearLayout>

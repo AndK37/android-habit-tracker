@@ -13,18 +13,20 @@ public class DBUtils {
     }
     public Cursor getHabit(int id) {
         Cursor cursor = db.rawQuery(
-                "SELECT h.name, h.desc, h.target, t.name, c.name, h.start_date FROM habits h\n" +
+                "SELECT h.name, h.desc, h.target, t.name, c.name, h.start_date, i.name FROM habits h\n" +
                 "JOIN types t ON h.type_id = t.id \n" +
                 "JOIN colors c on h.color_id = c.id\n" +
+                "JOIN icons i on h.icon_id = i.id\n" +
                 "WHERE h.id = ?", new String[]{Integer.toString(id)});
         cursor.moveToFirst();
         return cursor;
     }
     public Cursor getAllHabits() {
         Cursor cursor = db.rawQuery(
-                "SELECT h.id, h.name, h.desc, t.name, c.name FROM habits h\n" +
+                "SELECT h.id, h.name, h.desc, t.name, c.name, i.name FROM habits h\n" +
                 "JOIN types t ON h.type_id = t.id \n" +
                 "JOIN colors c on h.color_id = c.id\n" +
+                "JOIN icons i on h.icon_id = i.id\n" +
                 "WHERE h.is_active = 1", null);
         cursor.moveToFirst();
         return cursor;
@@ -108,12 +110,31 @@ public class DBUtils {
         return cursor.getInt(0);
     }
 
-    public void addHabit(String name, String desc, String type, String color, Integer target) {
+    public ArrayList<String> getHabitIcons() {
+        Cursor cursor = db.rawQuery("SELECT name FROM icons", null);
+        ArrayList<String> icons = new ArrayList<>();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icons.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        return icons;
+    }
+
+    public Integer getHabitIconIdByName(String name) {
+        Cursor cursor = db.rawQuery("SELECT id FROM icons WHERE name = ?", new String[] {name});
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public void addHabit(String name, String desc, String type, String color, String icon, Integer target) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("desc", desc);
         contentValues.put("type_id", getHabitTypeIdByName(type));
         contentValues.put("color_id", getHabitColorIdByName(color));
+        contentValues.put("icon_id", getHabitIconIdByName(icon));
         contentValues.put("target", target);
         db.insert("habits", null, contentValues);
     }
@@ -123,6 +144,15 @@ public class DBUtils {
         contentValues.put("is_active", 0);
 
         db.update("habits", contentValues, "id = ?", new String[] {Integer.toString(id)});
+    }
+
+    public Cursor getAllUncheckedHabits() {
+        Cursor cursor = db.rawQuery(
+                        "SELECT h.name FROM habits h \n" +
+                            "LEFT JOIN history h2 ON h2.habit_id = h.id\n" +
+                            "WHERE h.is_active = 1 AND check_date IS NULL ", null);
+        cursor.moveToFirst();
+        return cursor;
     }
 
 }

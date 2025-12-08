@@ -6,11 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,8 +23,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddActivity extends AppCompatActivity {
     private EditText nameET, descET, targetET;
+    private TextView targetTV;
     private Button addB;
-    private Spinner typeS, colorS;
+    private Spinner typeS, colorS, iconS;
     private DBHelper helper;
     private SQLiteDatabase database;
     private DBUtils dbUtils;
@@ -53,15 +56,39 @@ public class AddActivity extends AppCompatActivity {
         }
         dbUtils = new DBUtils(database);
 
+        nameET = findViewById(R.id.nameET);
+        descET = findViewById(R.id.descET);
+        targetET = findViewById(R.id.targetET);
+        targetTV = findViewById(R.id.targetTV);
+
         typeS = findViewById(R.id.typeS);
         typeS.setAdapter(new ArrayAdapter<String>(AddActivity.this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, dbUtils.getHabitTypes()));
+        typeS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).toString().equals("PROGRESSBAR")) {
+                    targetTV.setVisibility(View.VISIBLE);
+                    targetET.setVisibility(View.VISIBLE);
+                    targetET.setEnabled(true);
+                } else {
+                    targetTV.setVisibility(View.GONE);
+                    targetET.setVisibility(View.GONE);
+                    targetET.setEnabled(false);
+                    targetET.setText("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         colorS = findViewById(R.id.colorS);
         colorS.setAdapter(new ArrayAdapter<String>(AddActivity.this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, dbUtils.getHabitColors()));
 
-        nameET = findViewById(R.id.nameET);
-        descET = findViewById(R.id.descET);
-        targetET = findViewById(R.id.targetET);
+        iconS = findViewById(R.id.iconS);
+        iconS.setAdapter(new ArrayAdapter<String>(AddActivity.this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, dbUtils.getHabitIcons()));
 
         addB = findViewById(R.id.addB);
         addB.setOnClickListener(new View.OnClickListener() {
@@ -71,14 +98,17 @@ public class AddActivity extends AppCompatActivity {
                     Toast.makeText(AddActivity.this, "Название обязательно!", Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                if (typeS.getSelectedItem().toString().equals("PROGRESSBAR") && targetET.getText().toString().isEmpty()) {
+                    Toast.makeText(AddActivity.this, "Цель обязательна!", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Integer target = null;
                 if (!targetET.getText().toString().equals("")) {
                     target = Integer.parseInt(targetET.getText().toString());
                 }
                 dbUtils.addHabit(nameET.getText().toString(), descET.getText().toString(),
                         typeS.getSelectedItem().toString(), colorS.getSelectedItem().toString(),
-                        target);
+                        iconS.getSelectedItem().toString(), target);
                 setResult(100);
                 finish();
             }

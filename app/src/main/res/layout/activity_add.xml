@@ -76,6 +76,20 @@
                 style="@style/DefaultText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Изображение"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/iconS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/default_bd"
+                android:spinnerMode="dropdown"
+                android:padding="10dp"/>
+
+            <TextView
+                style="@style/DefaultText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Цвет"
                 android:textSize="20sp"/>
             <Spinner
@@ -87,12 +101,16 @@
                 android:padding="10dp"/>
 
             <TextView
+                android:visibility="gone"
                 style="@style/DefaultText"
+                android:id="@+id/targetTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Цель"
                 android:textSize="20sp"/>
             <EditText
+                android:visibility="gone"
+                android:enabled="false"
                 android:id="@+id/targetET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

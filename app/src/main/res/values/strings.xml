@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Habit Tracker</string>
+
+    <string name="day_counter">Дней: %d</string>
 </resources>

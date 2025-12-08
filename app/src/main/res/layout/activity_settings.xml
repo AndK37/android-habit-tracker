@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        style="@style/DefaultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Настройки"
+        android:textSize="32sp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/default_bd"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    style="@style/DefaultText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Уведомления"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/DefaultText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Включить уведомления"
+                        android:textSize="16sp" />
+                    <CheckBox
+                        android:id="@+id/notificationCB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:saveEnabled="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/DefaultText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Время уведомления (час)"
+                        android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/notificationET"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:hint="0..23"
+                        android:text="8"
+                        android:textColorHint="@color/light_grey"
+                        android:textAlignment="center"
+                        android:inputType="number"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/settingsB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/DefaultText"
+        android:backgroundTint="@color/grey"
+        android:text="Сохранить"/>
+
+
+
+</LinearLayout>
